@@ -1,0 +1,61 @@
+*{
+  margin: 0px;
+  padding: 0px;}
+ul li{
+  list-style-type: none
+}
+a,input,img{
+  border: 0px;
+  text-decoration: none;
+  outline: none
+}
+body{
+  font-family: "Microsoft YaHei UI";
+  font-weight: normal;
+  font-size: 14px;
+}
+input,textarea{
+  outline: none;
+}
+
+a{
+  color: #333;
+  text-decoration: none;
+
+  &:hover{
+    color: #666;
+    text-decoration: underline;
+  }
+  &:active{
+    color: #933;
+    text-decoration: underline;
+  }
+}
+
+
+
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+p{
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+.no-scroll{
+  overflow: hidden;
+}
