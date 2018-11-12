@@ -1,4 +1,10 @@
 # vue
+Before:
+
+ data文件夹内为简易nodeJs文件,提供简单跨域接口
+
+  需要到  data>  node index.js
+
 
 > A Vue.js project
 
