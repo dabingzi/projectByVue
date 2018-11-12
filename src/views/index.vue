@@ -1,5 +1,5 @@
 <template>
-  <div class="xiaobing">
+  <div class="getAllMyCabinsLine">
       <headOne></headOne>
       <headTwo></headTwo>
       <div class="searchArea">
