@@ -101,10 +101,10 @@
            this.condations=[];
            this.isActivity=true;
            this.isActivityTwo=true;
-            for(var n=0;n<this.startcity.length;n++){
+            for(let n=0;n<this.startcity.length;n++){
                 this.startcity[n].isshow=false
             };
-            for(var m=0;n<this.allBoats.length;m++){
+            for(let m=0;m<this.allBoats.length;m++){
                 this.allBoats[m].isshow=false
             };
             this.getAllCuriseLineByCondation();
@@ -145,7 +145,7 @@
            switch (index){
                case 0: {
                     var has=0;
-                   for(var n=0;n<this.startcity.length;n++){
+                   for(let n=0;n<this.startcity.length;n++){
                        if(this.startcity[n].id==id){
                            this.startcity[n].isshow=true;
                            this.isActivity=false;
@@ -161,7 +161,7 @@
                };
                case 1: {
                    var hasTwo=0;
-                      for(var m=0;m<this.allBoats.length;m++){
+                      for(let m=0;m<this.allBoats.length;m++){
                           if(this.allBoats[m].cruiseId==id){
                               this.allBoats[m].isshow=true;
                               this.isActivityTwo=false;
@@ -188,18 +188,18 @@
         },
         removeCurrent(id){
             var that=this, condations=that.condations;
-              for(var i=0;i<condations.length;i++){
+              for(let i=0;i<condations.length;i++){
                   if(condations[i].id===id){
                       switch (condations[i].index){
                           case 0: {
-                              for(var n=0;n<this.startcity.length;n++){
+                              for(let n=0;n<this.startcity.length;n++){
                                       this.startcity[n].isshow=false;
                               };
                               this.isActivity=true;
                               break;
                           };
                           case 1: {
-                              for(var m=0;m<this.allBoats.length;m++){
+                              for(let m=0;m<this.allBoats.length;m++){
                                       this.allBoats[m].isshow=false;
                                   }
                                 this.isActivityTwo=true;
