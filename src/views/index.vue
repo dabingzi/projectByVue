@@ -111,7 +111,7 @@
         },
         getAllStartCity(){
             var that=this;
-            that.$http.get("http://127.0.0.1:8081/findStartCityList").then((json)=>{
+            that.$http.get("/api/findStartCityList").then((json)=>{
                 that.startcity=json.data.rows;
             }).catch((error)=>{
                  new Error(error);
@@ -120,7 +120,7 @@
 
         getAllBoats(){
             var that=this;
-            that.$http.get("http://127.0.0.1:8081/getAllboats").then((json)=>{
+            that.$http.get("/api/getAllboats").then((json)=>{
                 that.allBoats=json.data.rows.listCruise;
             }).catch((error)=>{
                 new Error(error)
@@ -180,7 +180,7 @@
 
         getAllCuriseLineByCondation(){
             var that=this;
-            that.$http.get("http://127.0.0.1:8081/GetData",{param:that.condations}).then((json)=>{
+            that.$http.get("/api/GetData",{param:that.condations}).then((json)=>{
                 that.lineData=json.data.rows;
             }).catch((error)=>{
                 new Error(error)

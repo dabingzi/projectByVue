@@ -17,6 +17,8 @@
   </div>
 </template>
 <script>
+
+
     import {mapMutations} from 'vuex'
     import store from '@/store'
     import  {app} from  '@/extension'
