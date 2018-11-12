@@ -5,7 +5,7 @@ Before:
 
   需要到  data>  node index.js
 
-
+  src-->views内有页面组件
 > A Vue.js project
 
 ## Build Setup
