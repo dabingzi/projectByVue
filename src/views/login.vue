@@ -36,7 +36,8 @@
             userName:"",
             password:"",
           },
-            show:true
+            show:true,
+            isonClick:0,
         }
     },
       beforeMount: function(){
@@ -47,13 +48,18 @@
       },
     methods:{
       ...mapMutations(['rememberPSD']),
+
          LoginMyAccount(){
+          // 防重点  ==> 或使用节流
+             if(this.isonClick==1){ return};
+             this.isonClick=1;
              var param={
                  account:this.groceryList.userName,
                  password:this.groceryList.password
              };
              this.$http.get('http://test.youlunhui.com/youlh/user/login',{params:param}).then((json)=> {
                 if(json.data.status==200){
+                    this.isonClick=0;
                     if(store.state.loginUser.isAuth){
                         var p=JSON.stringify({params:param});
                         app.setCookie("auth",p,7)
@@ -63,9 +69,11 @@
                     // this.$router.push({name:"index"})     OK
                     this.$router.push({path:"/"})
                 }else{
+                    this.isonClick=0;
                     alert(json.msg)
                 }
              }).catch((error) => {
+                 this.isonClick=0;
                  new Error(error);
              })
          },

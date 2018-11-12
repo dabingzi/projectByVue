@@ -2,14 +2,11 @@
  * Created by paul on 2018/11/12.
  */
 var express = require('express');
-var fs=require('fs');
-var path = require('path');
 var app = express();
 
 //始发城市查询
 app.get('/findStartCityList',function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-
     res.end(JSON.stringify({"status":200,"msg":"","rows":[{"isDefault":1,"cityName":"上海","id":1}],"total":0,"other":null}));
 });
 // 所有船只调取
@@ -26,3 +23,4 @@ app.get('/GetData',function (req, res) {
 });
 
 app.listen(8081);
+console.log("success listne 8081");

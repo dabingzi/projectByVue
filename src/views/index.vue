@@ -25,10 +25,10 @@
       </div><!--searchArea-->
 
       <div class="listHead oldlisthead">
-          <div style="width: 114px;">出发时间</div>
-          <div style="width: 70px; padding-left:30px; margin-left:20px;text-align: left">船只</div>
-          <div style="width: 36px;">天数</div>
-          <div style="width: 125px; margin-left: 40px; text-align: left">行程</div>
+          <div>出发时间</div>
+          <div>船只</div>
+          <div>天数</div>
+          <div>行程</div>
           <div class="n1 nn">内双</div>
           <div class="n2 nn">内三</div>
           <div class="n3 nn">内四</div>
@@ -42,10 +42,10 @@
       </div><!--List导航-->
       <div class="ListAll" id="ListAll"  >
           <div class="mylist " v-for="(items, index) in lineData">
-              <div class="listone" style="width: 114px;"><span class="listDate">{{items.sailingDate}}({{items.weekDay}})</span></div>
-              <div class="listone" style="width: 100px; margin-left:20px;"><span class="listBoat">{{items.cruiseName}}<span style="color: #ff0000"></span></span></div>
-              <div class="listone" style="width: 36px;">5天</div>
-              <div class="listone" style="width: 125px; margin-left: 40px; text-align: left" title="">{{items.routes}}</div>
+              <div class="listone"><span class="listDate">{{items.sailingDate}}({{items.weekDay}})</span></div>
+              <div class="listone"><span class="listBoat">{{items.cruiseName}}<span style="color: #ff0000"></span></span></div>
+              <div class="listone">5天</div>
+              <div class="listone">{{items.routes}}</div>
               <div class="listone mm m1">{{items.listPrice[3].peerPrice}}</div>
               <div class="listone mm m2">{{items.listPrice[4].peerPrice}}</div>
               <div class="listone mm m3">{{items.listPrice[5].peerPrice}}</div>
@@ -111,7 +111,7 @@
         },
         getAllStartCity(){
             var that=this;
-            that.$http.get("/findStartCityList:8081").then((json)=>{
+            that.$http.get("http://127.0.0.1:8081/findStartCityList").then((json)=>{
                 that.startcity=json.data.rows;
             }).catch((error)=>{
                  new Error(error);
@@ -120,7 +120,7 @@
 
         getAllBoats(){
             var that=this;
-            that.$http.get("/getAllboats:8081").then((json)=>{
+            that.$http.get("http://127.0.0.1:8081/getAllboats").then((json)=>{
                 that.allBoats=json.data.rows.listCruise;
             }).catch((error)=>{
                 new Error(error)
@@ -180,7 +180,7 @@
 
         getAllCuriseLineByCondation(){
             var that=this;
-            that.$http.get("/GetData:8081",{param:that.condations}).then((json)=>{
+            that.$http.get("http://127.0.0.1:8081/GetData",{param:that.condations}).then((json)=>{
                 that.lineData=json.data.rows;
             }).catch((error)=>{
                 new Error(error)
