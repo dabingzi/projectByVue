@@ -1,7 +1,6 @@
 <template slot-scope>
   <div class="wapper">
   <div class="loginRight">
-
     <div class="lg_a">
       <div class="loginArea">
         <h1>{{systemName}}</h1>
@@ -15,13 +14,8 @@
     </div>
     </div>
   </div>
-
   </div>
-
-
 </template>
-
-
 <script>
     import {mapMutations} from 'vuex'
     import store from '@/store'
@@ -48,7 +42,6 @@
       },
     methods:{
       ...mapMutations(['rememberPSD']),
-
          LoginMyAccount(){
           // 防重点  ==> 或使用节流
              if(this.isonClick==1){ return};
@@ -90,9 +83,7 @@
   }
 
 </script>
-
-<style rel="stylesheet/scss" lang="scss">
-
+<style rel="stylesheet/scss" lang="css">
   .wapper{
     width: 100%;
     height: 100%;
@@ -158,7 +149,6 @@
     margin-bottom: 40px;
     font-weight: 700;
     text-align: center;
-
     span{
       color: #ff0000;
     }

@@ -210,7 +210,6 @@
               };
             that.getAllCuriseLineByCondation()
         },
-
     },
       computed:{
           showObject:function(){
