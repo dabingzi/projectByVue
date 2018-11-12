@@ -4,6 +4,7 @@ import index from '@/views/index'
 import HelloWorld from '@/components/HelloWorld'
 import head from '@/components/head/headOne'
 import login from '@/views/login'
+import testVue from '@/views/views'
 
 Vue.use(Router);
 
@@ -30,7 +31,7 @@ export default new Router({
     {
       path:'/login',
       component:login
-    }
+    },
 
   ]
 })

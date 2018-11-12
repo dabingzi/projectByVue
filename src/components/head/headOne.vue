@@ -49,13 +49,7 @@
          isshow:false,
          onshow:false
      }
-  },
-  methods:{
-
-  }
-
-
-}
+  },}
 </script>
 <style scoped>
   .sideAlong{

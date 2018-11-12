@@ -39,47 +39,35 @@
             show:true
         }
     },
-
       beforeMount: function(){
         var getData=app.getCookie("auth");
             getData=JSON.parse(getData);
-
           this.groceryList.userName=getData.params.account?getData.params.account:"";
           this.groceryList.password=getData.params.password?getData.params.password:"";
       },
-
     methods:{
       ...mapMutations(['rememberPSD']),
-
          LoginMyAccount(){
-             if(this.groceryList.userName==""){ alert("请输入有效的登录账号"); return};
-             if(this.groceryList.password==""){ alert("请输入有效的登录密码");return};
-             if(this.groceryList.password.length<5){ alert("密码不能小于5位");return};
-
              var param={
                  account:this.groceryList.userName,
                  password:this.groceryList.password
-             }
+             };
              this.$http.get('http://test.youlunhui.com/youlh/user/login',{params:param}).then((json)=> {
-                if(json.status==200){
+                if(json.data.status==200){
                     if(store.state.loginUser.isAuth){
                         var p=JSON.stringify({params:param});
                         app.setCookie("auth",p,7)
                     };
-
                     store.commit('onlogin');
-
                     //window.location.assign("/")            OK
                     // this.$router.push({name:"index"})     OK
                     this.$router.push({path:"/"})
-
                 }else{
                     alert(json.msg)
                 }
              }).catch((error) => {
-                 alert(error)
+                 new Error(error);
              })
-
          },
          isshow(){
               if(!this.show){
@@ -88,34 +76,14 @@
               }else {
                   this.show=false;
                   store.commit('noRememberPSD');
-                  alert(store.state.loginUser.isAuth)
               }
           }
     },
-
   }
 
 </script>
 
-
-
 <style rel="stylesheet/scss" lang="scss">
-
-  .fadeleft-enter-active{
-
-      transition: all .3s ease;
-
-  }
-
-
-  .fadeleft-leave-active {
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
-  .fadeleft-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active for below version 2.1.8 */ {
-    transform: translateX(10px);
-    opacity: 0;
-  }
 
   .wapper{
     width: 100%;
