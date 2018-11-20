@@ -6,8 +6,8 @@ import login from '@/views/login'
 
 Vue.use(Router);
 
-export default new Router({
-  routes: [
+export const bars=
+  [
     {
       path: '/',
       name: 'index',
@@ -25,5 +25,43 @@ export default new Router({
       component:login
     },
 
-  ]
+  ];
+
+export const constantRouterMap = [
+    {
+        path: '/',
+        redirect: '@/views/login',  // 重定向暂时还用登录页
+        hidden: true
+    },
+    { path: '/login', component: () => import('@/views/login'), hidden: true },
+    // { path: '/404', component: () => import('@/views/404'), hidden: true },   暂时没
+
+]
+
+
+
+
+const router = new Router({
+
+    routes: constantRouterMap.concat(bars)
+});
+
+router.beforeEach((to, from, next) => {
+
+    if (to.path === '/login') {
+        next()
+
+    }
+
+    next()
 })
+
+router.afterEach((to, from) => {
+
+   //
+});
+
+export default router
+
+
+
