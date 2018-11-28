@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/views/index'
-import head from '@/components/head/headOne'
 import login from '@/views/login'
 
 Vue.use(Router);
@@ -14,11 +13,6 @@ export const bars=
       component: index,
 
     },
-    {
-      path:'/two',
-      name:'head',
-      component:head
-    },
 
     {
       path:'/login',
@@ -28,15 +22,8 @@ export const bars=
   ];
 
 export const constantRouterMap = [
-    {
-        path: '/',
-        redirect: '@/views/login',  // 重定向暂时还用登录页
-        hidden: true
-    },
-    { path: '/login', component: () => import('@/views/login'), hidden: true },
-    // { path: '/404', component: () => import('@/views/404'), hidden: true },   暂时没
 
-]
+];
 
 
 
@@ -54,7 +41,7 @@ router.beforeEach((to, from, next) => {
     }
 
     next()
-})
+});
 
 router.afterEach((to, from) => {
 

@@ -41,23 +41,25 @@
           <div class="n10 nn">套房(起)</div>
       </div><!--List导航-->
       <div class="ListAll" id="ListAll"  >
-          <div class="mylist " v-for="(items, index) in lineData">
-              <div class="listone"><span class="listDate">{{items.sailingDate}}({{items.weekDay}})</span></div>
-              <div class="listone"><span class="listBoat">{{items.cruiseName}}<span style="color: #ff0000"></span></span></div>
-              <div class="listone">5天</div>
-              <div class="listone">{{items.routes}}</div>
-              <div class="listone mm m1">{{items.listPrice[3].peerPrice}}</div>
-              <div class="listone mm m2">{{items.listPrice[4].peerPrice}}</div>
-              <div class="listone mm m3">{{items.listPrice[5].peerPrice}}</div>
-              <div class="listone mm m4">{{items.listPrice[0].peerPrice}}</div>
-              <div class="listone mm m5">{{items.listPrice[1].peerPrice}}</div>
-              <div class="listone mm m6">{{items.listPrice[2].peerPrice}}</div>
-              <div class="listone mm m7">{{items.listPrice[6].peerPrice}}</div>
-              <div class="listone mm m8">{{items.listPrice[7].peerPrice}}</div>
-              <div class="listone mm m9">{{items.listPrice[8].peerPrice}}</div>
-              <div class="listone mm m10">{{items.listPrice[9].peerPrice}}</div>
-              <div class="listone showanymore" style="width: 39px;"><img src="../images/blacksjs.png" class="anymore" index="0"></div>
-          </div>
+          <!--<div class="mylist " v-for="(items, index) in lineData">-->
+              <!--<div class="listone"><span class="listDate">{{items.sailingDate}}({{items.weekDay}})</span></div>-->
+              <!--<div class="listone"><span class="listBoat">{{items.cruiseName}}<span style="color: #ff0000"></span></span></div>-->
+              <!--<div class="listone">5天</div>-->
+              <!--<div class="listone">{{items.routes}}</div>-->
+              <!--<div class="listone mm m1">{{items.listPrice[3].peerPrice}}</div>-->
+              <!--<div class="listone mm m2">{{items.listPrice[4].peerPrice}}</div>-->
+              <!--<div class="listone mm m3">{{items.listPrice[5].peerPrice}}</div>-->
+              <!--<div class="listone mm m4">{{items.listPrice[0].peerPrice}}</div>-->
+              <!--<div class="listone mm m5">{{items.listPrice[1].peerPrice}}</div>-->
+              <!--<div class="listone mm m6">{{items.listPrice[2].peerPrice}}</div>-->
+              <!--<div class="listone mm m7">{{items.listPrice[6].peerPrice}}</div>-->
+              <!--<div class="listone mm m8">{{items.listPrice[7].peerPrice}}</div>-->
+              <!--<div class="listone mm m9">{{items.listPrice[8].peerPrice}}</div>-->
+              <!--<div class="listone mm m10">{{items.listPrice[9].peerPrice}}</div>-->
+              <!--<div class="listone showanymore" style="width: 39px;"><img src="../images/blacksjs.png" class="anymore" index="0"></div>-->
+          <!--</div>-->
+
+          <navyList v-for="(items, index) in lineData" v-bind:todo="items"></navyList>
       </div>
   </div>
 
@@ -65,8 +67,10 @@
 
 <script>
   import  {headOne, headTwo} from '@/components/head'
+  import  {navyList} from  '@/components/indexsrc'
   import {mapMutations} from 'vuex'
   import store from '@/store'
+  //import {index_api} from '@/api'
   export default{
     name:'index',
     data(){
@@ -79,16 +83,18 @@
         isActivityTwo:true,
         condations:[],  //  条件
         ishowMe:false,
+
       }
     },
     components: {
         headOne,
-        headTwo
+        headTwo,
+        navyList
     },
       created(){
-          if(!store.state.islogin.loginStatus){
-              this.$router.push({path:"/login"})
-          }
+//          if(!store.state.islogin.loginStatus){
+//              this.$router.push({path:"/login"})
+//          }
       },
       beforeMount(){
         this.getAllStartCity();
