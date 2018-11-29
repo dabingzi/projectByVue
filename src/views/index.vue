@@ -41,7 +41,6 @@
           <div class="n10 nn">套房(起)</div>
       </div><!--List导航-->
       <div class="ListAll" id="ListAll"  >
-         
           <navyList v-for="(items, index) in lineData" v-bind:todo="items"></navyList>
       </div>
   </div>
