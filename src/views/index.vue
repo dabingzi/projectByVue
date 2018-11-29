@@ -1,6 +1,6 @@
 <template>
   <div class="getAllMyCabinsLine">
-      <headOne></headOne>
+
       <headTwo></headTwo>
       <div class="searchArea">
           <div class="commenZoom">
@@ -43,6 +43,8 @@
       <div class="ListAll" id="ListAll"  >
           <navyList v-for="(items, index) in lineData" v-bind:todo="items"></navyList>
       </div>
+
+      <p class="checkmore" @click="checkMoreData">查看更多</p>
   </div>
 
 </template>
@@ -53,6 +55,7 @@
   import {mapMutations} from 'vuex'
   import store from '@/store'
   import {index_api} from '../api/home'
+  import  {app,bus} from  '@/extension'
   export default{
     name:'index',
     data(){
@@ -77,14 +80,24 @@
 //          if(!store.state.islogin.loginStatus){
 //              this.$router.push({path:"/login"})
 //          }
+
+
       },
       beforeMount(){
         this.getAllStartCity();
         this.getAllBoats();
-        this.getAllCuriseLineByCondation()
+        this.getAllCuriseLineByCondation(1)
+      },
+      mounted(){
+          bus.$on('isopenMeAndCloseOther',function () {
+              
+          })
       },
     methods:{
+
+
           //  清除全部查询条件
+
         clearAllCondations(){
            this.condations=[];
            this.isActivity=true;
@@ -110,12 +123,15 @@
 
         getAllBoats(){
             var that=this;
-            index_api.getAllboats().then((json)=>{
-                that.allBoats=json.rows.listCruise;
+            index_api.getAllboats().then((json)=>{that.allBoats=json.rows.listCruise;
+
+
             }).catch((error)=>{
                 new Error(error)
             })
         },
+
+
         addThisAsCurrentType(id,name,index){
             var that=this, condation=that.condations,o=0; // id,name,index
                for(let i=0;i<condation.length;i++){
@@ -168,10 +184,18 @@
           that.getAllCuriseLineByCondation();
         },
 
-        getAllCuriseLineByCondation(){
+        getAllCuriseLineByCondation(num){
             var that=this;
             index_api.GetData({param:that.condations}).then((json)=>{
-                that.lineData=json.rows;
+
+
+                if(num==1){
+                    that.lineData=json.rows;
+                }else {
+                    for(var key=0;key<json.rows.length;key++){
+                        that.lineData.push(json.rows[key])
+                    }
+                }
             }).catch((error)=>{
                 new Error(error)
             })
@@ -200,6 +224,11 @@
               };
             that.getAllCuriseLineByCondation()
         },
+
+        // 获得更多数据
+        checkMoreData(){
+            this.getAllCuriseLineByCondation(2)
+        }
     },
       computed:{
           showObject:function(){
@@ -224,6 +253,9 @@
         font-weight: bold;
         padding-left: 10px;
         text-align: left;
+    }
+    .checkmore{
+        width:1200px; height: 40px; line-height: 40px; cursor: pointer; margin: 0 auto; background-color: #ccc; color: #fff
     }
 </style>
 

@@ -1,7 +1,7 @@
 /**
  * Created by paul on 2018/11/2.
  */
-
+import Vue from 'vue'
 var app={
     setCookie:function (name, value, iDay) {
         var oDate = new Date();
@@ -33,7 +33,9 @@ var app={
     }
     return hexCharCode.join("");
 }
-}
+};
+
+const  bus = new Vue();
 
 
-export {app}
+export {app,bus}
