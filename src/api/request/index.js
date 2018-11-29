@@ -5,7 +5,7 @@ import axios from  'axios'
 import cfg from '../../baseConfig'
  const onServerError = cfg.onServerError || function(code, errorMsg, data) {
         //alert(errorMsg)
-    }
+    };
 
 class ServerFn{
     constructor(url,name,method){
@@ -62,7 +62,7 @@ class ServerFn{
 
 let api=function (apiSet) {
     for(let key in apiSet){
-        let uArr=key.split('!');   //url是否满足  name!GET or name!POST 命名规则
+        let uArr=key.split('!');   //ur l是否满足  name!GET or name!POST 命名规则
         let pName=uArr[0];
         let pMethod=uArr[1]?uArr[1].toString().toUpperCase() : 'GET';
         if(!api[pName]){

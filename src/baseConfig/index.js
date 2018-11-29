@@ -10,10 +10,12 @@
 
 const onUnauthorizedError = () => {
        alert("hello,Error");
-   // 路由跳转
+       //@如果用UI框架可以使用框架提供的message框
+
 };
 const urlLetGo = () => {
     alert("hello,Error");
+    //@如果用UI框架可以使用框架提供的message框
     // 路由跳转
 };
 config.onServerError = (code, errorMsg, data) => {

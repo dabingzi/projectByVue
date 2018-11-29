@@ -4,10 +4,10 @@
 import { api } from '../request'
 
 api({
-    'findStartCityList!GET':"/findStartCityList",
-    'getAllboats!GET':'/getAllboats',
-    'GetData!GET':'/GetData',
-    'getMyCruiseDetails!GET': '/getCuriseDetails',
+    'findStartCityList':"/findStartCityList",
+    'getAllboats':'/getAllboats',
+    'GetData':'/GetData',
+    'getMyCruiseDetails': '/getCuriseDetails',
 });
 
 const index_api=api;

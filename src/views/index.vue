@@ -118,7 +118,7 @@
             var that=this;
 
             index_api.findStartCityList().then((json)=>{
-                alert(JSON.stringify(json))
+
                 that.startcity=json.rows;
             }).catch((error)=>{
                  new Error(error);
