@@ -6,16 +6,16 @@
         <div class="listone"><span class="listBoat">{{todo.cruiseName}}<span style="color: #ff0000"></span></span></div>
         <div class="listone">5天</div>
         <div class="listone">{{todo.routes}}</div>
-        <div class="listone mm m1">{{todo.listPrice[3].peerPrice}}</div>
-        <div class="listone mm m2">{{todo.listPrice[4].peerPrice}}</div>
-        <div class="listone mm m3">{{todo.listPrice[5].peerPrice}}</div>
-        <div class="listone mm m4">{{todo.listPrice[0].peerPrice}}</div>
-        <div class="listone mm m5">{{todo.listPrice[1].peerPrice}}</div>
-        <div class="listone mm m6">{{todo.listPrice[2].peerPrice}}</div>
-        <div class="listone mm m7">{{todo.listPrice[6].peerPrice}}</div>
-        <div class="listone mm m8">{{todo.listPrice[7].peerPrice}}</div>
-        <div class="listone mm m9">{{todo.listPrice[8].peerPrice}}</div>
-        <div class="listone mm m10">{{todo.listPrice[9].peerPrice}}</div>
+        <div class="listone mm m1">{{todo.listPrice[3].peerPrice==-1?"--":todo.listPrice[3].peerPrice}}</div>
+        <div class="listone mm m2">{{todo.listPrice[4].peerPrice==-1?"--":todo.listPrice[4].peerPrice}}</div>
+        <div class="listone mm m3">{{todo.listPrice[5].peerPrice==-1?"--":todo.listPrice[5].peerPrice}}</div>
+        <div class="listone mm m4">{{todo.listPrice[0].peerPrice==-1?"--":todo.listPrice[0].peerPrice}}</div>
+        <div class="listone mm m5">{{todo.listPrice[1].peerPrice==-1?"--":todo.listPrice[1].peerPrice}}</div>
+        <div class="listone mm m6">{{todo.listPrice[2].peerPrice==-1?"--":todo.listPrice[2].peerPrice}}</div>
+        <div class="listone mm m7">{{todo.listPrice[6].peerPrice==-1?"--":todo.listPrice[6].peerPrice}}</div>
+        <div class="listone mm m8">{{todo.listPrice[7].peerPrice==-1?"--":todo.listPrice[7].peerPrice}}</div>
+        <div class="listone mm m9">{{todo.listPrice[8].peerPrice==-1?"--":todo.listPrice[8].peerPrice}}</div>
+        <div class="listone mm m10">{{todo.listPrice[9].peerPrice==-1?"--":todo.listPrice[9].peerPrice}}</div>
         <div class="listone showanymore" @click="getSingleDetails(todo.voyageNo)" style="width: 39px;"><img src="../../images/blacksjs.png" class="anymore" index="0"></div>
     </div>
 
@@ -45,7 +45,7 @@
                     <div class="zoomBG">
                         <ul class="ulZoom">
                             <li>
-                                标准内舱四人房11/12<span class="anypeople">(4成人)</span>    <span class="howmany">X1</span> 8796 <span class="deleteThis">删除</span>
+                                标准内舱四人房11/12<span class="anypeople">(4成人)</span>    <span class="howmany">X1</span> 8796
                             </li>
                         </ul>
                         <p class="z_detail">以上价格包含：行程内的船票、邮轮港务税费、领队费、赠送的岸上观光（如适用）、船舶观光登陆许可证（日本免签）</p>
@@ -63,9 +63,9 @@
             <tr v-for="(tds, index) in cabinList"><td width="90" class="firsttd">{{myname[index]}}</td><td>
                 <div class="oneline" v-for="cruise in tds">
                     <div class="lname">{{cruise.cabinTypeHead}}</div>
-                    <div class="lprice adprice"><div class="limitPrice">{{cruise.price234[0].peerPrice==-1?"":cruise.price234[0].peerPrice}}</div>  <div class="limitAdd plusLimit " v-if="cruise.price234[0].peerPrice!==-1"><span class="limitIt">-</span><input type="text" class="curNubs" value="0"  readonly="readonly"><span class="addIt">+</span>间</div><div v-else ></div></div>
-                    <div class="lprice adprice"><div class="limitPrice">{{cruise.price234[1].peerPrice==-1?"":cruise.price234[1].peerPrice}}</div>  <div class="limitAdd plusLimit" v-if="cruise.price234[1].peerPrice!==-1"><span class="limitIt">-</span><input type="text" class="curNubs" value="0" readonly="readonly"><span class="addIt">+</span>间</div><div v-else ></div></div>
-                    <div class="lprice adprice"><div class="limitPrice">{{cruise.price234[2].peerPrice==-1?"":cruise.price234[2].peerPrice}}</div>  <div class="limitAdd plusLimit" v-if="cruise.price234[2].peerPrice!==-1"><span class="limitIt">-</span><input type="text" class="curNubs" value="0" readonly="readonly"><span class="addIt">+</span>间</div><div v-else ></div></div>
+                    <div class="lprice adprice"><div class="limitPrice">{{cruise.price234[0].peerPrice==-1?"":cruise.price234[0].peerPrice}}</div>  <div class="limitAdd plusLimit " v-if="cruise.price234[0].peerPrice!==-1"><span class="limitIt" @click="computedMycurise">-</span><input type="text" class="curNubs" value="0"  readonly="readonly"><span class="addIt" @click="computedMycurise">+</span>间</div><div v-else ></div></div>
+                    <div class="lprice adprice"><div class="limitPrice">{{cruise.price234[1].peerPrice==-1?"":cruise.price234[1].peerPrice}}</div>  <div class="limitAdd plusLimit" v-if="cruise.price234[1].peerPrice!==-1"><span class="limitIt" @click="computedMycurise">-</span><input type="text" class="curNubs" value="0" readonly="readonly"><span class="addIt" @click="computedMycurise">+</span>间</div><div v-else ></div></div>
+                    <div class="lprice adprice"><div class="limitPrice">{{cruise.price234[2].peerPrice==-1?"":cruise.price234[2].peerPrice}}</div>  <div class="limitAdd plusLimit" v-if="cruise.price234[2].peerPrice!==-1"><span class="limitIt" @click="computedMycurise">-</span><input type="text" class="curNubs" value="0" readonly="readonly"><span class="addIt" @click="computedMycurise">+</span>间</div><div v-else ></div></div>
                 </div>
             </td></tr>
         </table>
@@ -110,16 +110,13 @@
                 this.cabinList=json.rows.item;
 
             })
+        },
+
+        computedMycurise(type,price){
+
         }
     },
-     watch:{
-         cruiseData:{
-             deep:true,
-             handler:function () {
-                 console.log("")
-             }
-         }
-     },
+
      computed:{
          showmydetails:function(){
              return{
