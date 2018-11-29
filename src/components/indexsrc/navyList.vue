@@ -15,16 +15,29 @@
         <div class="listone mm m8">{{todo.listPrice[7].peerPrice}}</div>
         <div class="listone mm m9">{{todo.listPrice[8].peerPrice}}</div>
         <div class="listone mm m10">{{todo.listPrice[9].peerPrice}}</div>
-        <div class="listone showanymore" style="width: 39px;"><img src="../../images/blacksjs.png" class="anymore" index="0"></div>
+        <div class="listone showanymore" @click="getSingleDetails(todo.voyageNo)" style="width: 39px;"><img src="../../images/blacksjs.png" class="anymore" index="0"></div>
     </div>
 </template>
 
 
 <script>
-
-export default {
+ //import {api} from '../../api/home'
+ export default {
         name:'navyList',
         props:['todo'],
+        data(){
+           return{
+           }
+        },
+    methods:{
+        getSingleDetails(voyageNo){
+            var that=this;
+//            api.getMyCruiseDetails().then(resolve=>{
+//               console.log(resolve)
+//            })
+
+        }
+    }
 
 }
 </script>

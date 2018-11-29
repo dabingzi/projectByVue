@@ -3,17 +3,17 @@
  */
 
 
-export  default  config={
+ const config={
        baseUrl:"/api/"
 };
 
 
 const onUnauthorizedError = () => {
-       alert("hello,Error")
+       alert("hello,Error");
    // 路由跳转
 };
 const urlLetGo = () => {
-    alert("hello,Error")
+    alert("hello,Error");
     // 路由跳转
 };
 config.onServerError = (code, errorMsg, data) => {
@@ -23,4 +23,6 @@ config.onServerError = (code, errorMsg, data) => {
     } else {
         urlLetGo();
     }
-}
+};
+
+export  default config

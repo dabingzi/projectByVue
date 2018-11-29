@@ -58,7 +58,6 @@
               <!--<div class="listone mm m10">{{items.listPrice[9].peerPrice}}</div>-->
               <!--<div class="listone showanymore" style="width: 39px;"><img src="../images/blacksjs.png" class="anymore" index="0"></div>-->
           <!--</div>-->
-
           <navyList v-for="(items, index) in lineData" v-bind:todo="items"></navyList>
       </div>
   </div>
@@ -70,7 +69,7 @@
   import  {navyList} from  '@/components/indexsrc'
   import {mapMutations} from 'vuex'
   import store from '@/store'
-  //import {index_api} from '@/api'
+  import {index_api} from '../api/home'
   export default{
     name:'index',
     data(){
@@ -117,8 +116,10 @@
         },
         getAllStartCity(){
             var that=this;
-            that.$http.get("/api/findStartCityList").then((json)=>{
-                that.startcity=json.data.rows;
+
+            index_api.findStartCityList().then((json)=>{
+                alert(JSON.stringify(json))
+                that.startcity=json.rows;
             }).catch((error)=>{
                  new Error(error);
             });
@@ -126,8 +127,8 @@
 
         getAllBoats(){
             var that=this;
-            that.$http.get("/api/getAllboats").then((json)=>{
-                that.allBoats=json.data.rows.listCruise;
+            index_api.getAllboats().then((json)=>{
+                that.allBoats=json.rows.listCruise;
             }).catch((error)=>{
                 new Error(error)
             })
@@ -186,8 +187,8 @@
 
         getAllCuriseLineByCondation(){
             var that=this;
-            that.$http.get("/api/GetData",{param:that.condations}).then((json)=>{
-                that.lineData=json.data.rows;
+            index_api.GetData({param:that.condations}).then((json)=>{
+                that.lineData=json.rows;
             }).catch((error)=>{
                 new Error(error)
             })
