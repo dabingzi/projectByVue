@@ -8,7 +8,7 @@ import cfg from '../../baseConfig'
     };
 
 class ServerFn{
-    constructor(url,name,method){
+    constructor(url,name,method="GET"){
         if(url.indexOf('http://') ===0 ||url.indexOf('https://')===0) this.url=url;
         else this.url = cfg.baseUrl +url.replace(/^\//, '');
         this.name=name;

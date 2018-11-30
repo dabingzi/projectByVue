@@ -22,6 +22,7 @@
     import {mapMutations} from 'vuex'
     import store from '@/store'
     import  {app} from  '@/extension'
+    import {login_api} from '../api/login'
     export default {
     name: 'login',
     components:"",
@@ -52,8 +53,8 @@
                  account:this.groceryList.userName,
                  password:this.groceryList.password
              };
-             this.$http.get('http://test.youlunhui.com/youlh/user/login',{params:param}).then((json)=> {
-                if(json.data.status==200){
+             login_api.siginIn({params:param}).then((json)=> {
+                if(json.status==200){
                     this.isonClick=0;
                     if(store.state.loginUser.isAuth){
                         var p=JSON.stringify({params:param});
