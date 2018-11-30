@@ -1,11 +1,14 @@
 # vue
 Before:
 
- data文件夹内为简易nodeJs文件,提供简单跨域接口
+ data文件夹内为简易nodeJs文件,提供简单跨域接口。
 
-  需要到  data>  node index.js
+  启动项目之前需要到data文件夹下  node index.js
 
   src-->views内有页面组件
+  src-->api内能管理各页面级组件的请求url，并给url注册axios
+  
+  
 > A Vue.js project
 
 ## Build Setup
